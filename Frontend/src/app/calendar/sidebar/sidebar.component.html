@@ -1,0 +1,42 @@
+<button
+    class="btn btn-sm btn-primary toggle-collapse"
+    (click)="toggleCollapse()"
+>
+  <i *ngIf="collapsed" class="fas fa-angle-right"></i>
+  <i *ngIf="!collapsed" class="fas fa-angle-left"></i>
+</button>
+
+<div class="container">
+  <h3>Groups</h3>
+
+  <label
+      *ngFor="let group of groups"
+      class="control control-checkbox"
+      for="group-toggle-{{ group.id }}"
+  >
+    {{ group.name }}
+    <input
+        type="checkbox"
+        id="group-toggle-{{ group.id }}"
+        [checked]="showGroup[group.id]"
+        (click)="toggleGroup(group)"
+    >
+    <div class="control-indicator"></div>
+  </label>
+
+  <button
+      type="button"
+      class="btn btn-primary"
+      routerLink="/new-group"
+  >
+    New group
+  </button>
+  
+  <button
+      type="button"
+      class="btn btn-primary"
+      routerLink="/new-event"
+  >
+    New event
+  </button>
+</div>

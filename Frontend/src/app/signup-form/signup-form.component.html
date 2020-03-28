@@ -1,0 +1,98 @@
+<div class="container form" id="signup-form">
+  <div class="card shadow-sm">
+    <h2 class="card-header">
+      Create an account
+    </h2>
+    
+    <div class="card-body">
+      <form [formGroup]="form" [class.failed]="failed" (ngSubmit)="submit()">
+        <div class="form-group">
+          <input
+              type="text"
+              class="form-control"
+              formControlName="name"
+              placeholder="Name"
+              required
+          >
+          
+          <span class="input-error" *ngIf="failed && form.get('name').invalid">
+            Please enter your name
+          </span>
+        </div>
+        
+        <div class="form-group">
+          <input
+              type="text"
+              class="form-control"
+              formControlName="username"
+              placeholder="Username"
+              required
+          >
+          
+          <span class="input-error" *ngIf="failed && form.get('username').invalid">
+            Please enter a username
+          </span>
+        </div>
+        
+        <div class="form-group">
+          <input
+              type="email"
+              class="form-control"
+              formControlName="email"
+              placeholder="Email"
+              required
+          >
+          
+          <span class="input-error" *ngIf="failed && form.get('email').invalid">
+            Please enter a valid email address
+          </span>
+        </div>
+
+        <div class="form-group">
+          <input
+              type="password"
+              class="form-control"
+              formControlName="password"
+              placeholder="Password"
+              minLength="8"
+              required
+          >
+          
+          <span class="input-error" *ngIf="failed && form.get('password').invalid">
+            Please enter a password
+          </span>
+        </div>
+
+        <div class="form-group">
+          <input
+              type="password"
+              class="form-control"
+              formControlName="confirmPassword"
+              placeholder="Retype password"
+              minLength="8"
+              required
+          >
+          
+          <span class="input-error" *ngIf="failed && form.get('confirmPassword').invalid">
+            Please retype your password
+          </span>
+        </div>
+
+        <div class="form-error" *ngIf="failed && form.errors && form.errors.mismatch">
+          Passwords must match.
+        </div>
+
+        <div class="form-group mt-4">
+          <button type="submit" class="btn btn-block btn-outline-primary">
+            Sign up
+          </button>
+        </div>
+      </form>
+      
+      <a class="card-link" routerLink="/login">
+        Already have an account?
+      </a>
+    </div>
+  </div>
+</div>
+

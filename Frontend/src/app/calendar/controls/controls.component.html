@@ -1,0 +1,13 @@
+<div id="month-selector" class="btn-group">
+  <button type="button" class="btn btn-secondary prev-btn" (click)="prev()"><i class="fas fa-chevron-left"></i></button>
+  <button type="button" class="btn btn-secondary today-btn" (click)="today()">Today</button>
+  <button type="button" class="btn btn-secondary next-btn" (click)="next()"><i class="fas fa-chevron-right"></i></button>
+</div>
+
+<div id="selected-month">{{ display }}</div>
+
+<div class="btn-group" role="group" aria-label="Basic example">
+  <button type="button" class="btn btn-secondary month-btn" (click)="changeView(0)"></button>
+  <button type="button" class="btn btn-secondary week-btn" (click)="changeView(1)"></button>
+  <button type="button" class="btn btn-secondary day-btn" (click)="changeView(2)"></button>
+</div>

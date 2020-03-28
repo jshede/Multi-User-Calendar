@@ -1,0 +1,158 @@
+html,
+body {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    line-height: 1.5;
+    text-rendering: optimizeLegibility !important;
+    font-size: 18px;
+    font-weight: 300;
+    color: #344;
+    font-family: Merriweather, serif;
+}
+
+p {
+    word-spacing: 1px;
+}
+
+a {
+    outline: 0;
+}
+
+/* Adjust font size with screen size */
+@media (max-width: 48em) {
+    body {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 32em) {
+    body {
+        font-size: 14px;
+    }
+}
+
+@media (min-width: 128em) {
+    body {
+        font-size: 20px;
+    }
+}
+
+
+/* Link */
+a {
+    color: dodgerblue;
+    text-decoration: none;
+    outline: none;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font: inherit;
+    padding: 0;
+}
+
+/* Hovered or focused link */
+a:hover,
+a:active,
+a:focus {
+    text-decoration: underline;
+}
+
+/* Hovered, but not focused link */
+a:hover,
+a:active {
+    color: inherit;
+}
+
+/* Headers */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    color: #302a48;
+    margin: .75em 0;
+    line-height: 1.2;
+}
+
+h1:first-child,
+h2:first-child,
+h3:first-child,
+h4:first-child,
+h5:first-child,
+h6:first-child {
+    margin-top: 0;
+}
+
+h1 {
+    font-size: 300%;
+    letter-spacing: -1.25px;
+}
+
+h2 {
+    font-size: 225%;
+    letter-spacing: -.75px;
+}
+
+h3 {
+    font-size: 175%;
+    letter-spacing: -.25px;
+}
+
+h4 {
+    font-size: 140%;
+}
+
+h5 {
+    font-size: 115%;
+}
+
+h6 {
+    font-size: 100%;
+}
+
+/* Center headers & figures on small screens */
+/* Soften header size contrast on small screens */
+@media (max-width: 480px) {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        text-align: center;
+    }
+
+    figure {
+	justify-content: center;
+    }
+
+    h1 {
+        font-size: 275%;
+    }
+
+    h2 {
+        font-size: 215%;
+    }
+
+    h3 {
+        font-size: 170%;
+    }
+}
+
+input {
+    background-color: inherit;
+    color: inherit;
+    font: inherit;
+    font-size: 100%;
+    text-align: inherit;
+    border: none;
+    outline: none;
+    -webkit-appearance: none;
+}

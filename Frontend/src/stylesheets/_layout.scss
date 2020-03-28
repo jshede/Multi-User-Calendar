@@ -1,0 +1,81 @@
+app-root {
+    width: 100%;
+}
+
+#site-root {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    height: auto;
+    min-height: 100vh;
+}
+
+#site-header {
+    width: 100%;
+    padding: 0.2em 0.35em 0;
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    @media screen and (max-width: 800px) {
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    text-align: center;
+    line-height: 1.25;
+    font-size: 2em;
+
+    #site-home-container {
+        outline: none;
+        text-decoration: none;
+        color: inherit;
+    }
+
+    #site-username {
+        @media screen and (min-width: 801px) {
+            position: absolute;
+            left: 0;
+            right: 0;
+            align-self: center;
+            z-index: -1;
+        }
+    }
+
+    #site-title {
+        margin: 0;
+        height: 1.2em;
+        pointer-events: none;
+    }
+
+    .nav-link {
+        outline: none;
+        width: 2em;
+        border-bottom: none;
+    }
+}
+
+#site-content {
+    display: flex;
+    flex: 1 auto;
+    width: 100%;
+}
+
+#site-footer {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    padding: 1.5em 0;
+
+    font-style: italic;
+    line-height: 1.5;
+
+    background-color: $neutral-border;
+}

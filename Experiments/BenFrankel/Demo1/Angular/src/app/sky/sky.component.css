@@ -1,0 +1,10 @@
+.sky-component {
+    background-color: #87ceeb;
+    background: #a9e4e8; /* Old browsers */
+    background: -moz-linear-gradient(-45deg, #a9e4e8 0%, #eaffff 18%, #a9e4e8 29%, #eaffff 38%, #c0e9ed 45%, #eaffff 49%, #a5c1e2 61%, #efdea0 83%, #e8807d 94%, #d5a9fc 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg, #a9e4e8 0%,#eaffff 18%,#a9e4e8 29%,#eaffff 38%,#c0e9ed 45%,#eaffff 49%,#a5c1e2 61%,#efdea0 83%,#e8807d 94%,#d5a9fc 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg, #a9e4e8 0%,#eaffff 18%,#a9e4e8 29%,#eaffff 38%,#c0e9ed 45%,#eaffff 49%,#a5c1e2 61%,#efdea0 83%,#e8807d 94%,#d5a9fc 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a9e4e8', endColorstr='#d5a9fc',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    display: flex;
+    height: 100%;
+}

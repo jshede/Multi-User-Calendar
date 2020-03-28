@@ -1,0 +1,13 @@
+<ng-template #popOver>
+  {{ event.description }}
+</ng-template>
+
+<li
+    [style.background-color]="bg[event.groupId % bg.length]"
+    [style.border-color]="border[event.groupId % border.length]"
+    placement="top"
+    [ngbPopover]="popOver"
+    popoverTitle="{{ event.name }} ({{ event.location }})"
+    triggers="mouseenter:mouseleave"
+    (click)="eventViewData()"
+></li>

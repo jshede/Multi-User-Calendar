@@ -1,0 +1,64 @@
+.garden-component {
+    padding-top: 1.5em;
+    background-color: #9d7752;
+}
+
+.garden {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.plant-item {
+    padding: 1em;
+    margin: 1em;
+    width: 3in;
+    background-color: #eee;
+    box-shadow: #6e563e 0 2px 2px 2px;
+}
+
+.selected {
+    position: relative;
+    top: -1em;
+    box-shadow: #4e3f31 0 .8em 8px 1px;
+}
+
+.showcase {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2em;
+}
+
+.showcase .plant-item {
+    width: 6in;
+    padding: 2em 1em 3em 1em;
+    text-align: center;
+    box-shadow: #6e563e 0 5px 5px 2px;
+}
+
+.badge {
+    display: inline-block;
+    height: 100%;
+    padding: .25em .4em;
+    margin-bottom: .2em;
+    margin-right: .2em;
+    font-weight: bold;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem 0 0 .25rem;
+    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+    text-transform: capitalize;
+    font-size: .9em;
+    background-color: #e38;
+    color: white;
+}
+
+.attribute {
+    background-color: white;
+    border-radius: .25rem;
+    display: inline;
+    padding-right: .45em;
+    width: 100%;
+}

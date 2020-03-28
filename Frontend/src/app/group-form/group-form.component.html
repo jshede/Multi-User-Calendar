@@ -1,0 +1,40 @@
+<div class="container form" id="new-group-form">
+  <div class="card shadow-sm">
+    <h2 class="card-header">
+      Create a group
+    </h2>
+
+    <div class="card-body">
+      <form [formGroup]="form" [class.failed]="failed" (ngSubmit)="createGroup()">
+        <div class="form-group">
+          <input type="text" class="form-control" formControlName="name" placeholder="Group" required>
+          
+          <span class="input-error" *ngIf="failed && form.get('name').invalid">
+            Please enter a group name
+          </span>
+        </div>
+
+        <div class="form-group">
+          <textarea
+              class="form-control"
+              formControlName="description"
+              rows="2"
+              cols="36"
+              maxlength="72"
+              placeholder="Description (72 characters)"
+          ></textarea>
+          
+          <span class="input-error" *ngIf="failed && form.get('description').invalid">
+            Please enter a short description
+          </span>
+        </div>
+
+        <div class="form-group mt-4">
+          <button type="submit" class="btn btn-block btn-outline-primary">
+            Create Group
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

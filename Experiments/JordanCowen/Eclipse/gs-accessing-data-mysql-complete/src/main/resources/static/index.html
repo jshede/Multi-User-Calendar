@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<!
+	This is an experiment that uses javascript, html, bootstrap4
+	google geocode api, and html5 geolocation feature. To use the
+	google geocode api, enter your address in the text box and press submit.
+	This will display, several things about the address.
+
+	To use the html5 geolocation feature, press the 'get location' button. this
+	will display your current coordinates.
+
+	In the future, we can compare these with in a certain range to track attendance at an event.
+
+
+>
+<html>
+	<head>
+		<!Add bootstrap4 to the html>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<title>Check location</title>
+		<style>
+		/* Set the size of the div element that contains the map */
+		#map {
+        height: 400px;  /* The height is 400 pixels */
+        width: 100%;  /* The width is the width of the web page */
+		}
+		</style>
+	</head>
+
+<body>
+	<h2 id="text-center">Enter Location: </h2>
+		<form id = "location-form">
+			<input type = "text" id = "location-input"
+			class = "form-control form-control-lg">
+			<button type  = "sumbit" class = "btn btn-primary btn-block"> Submit </button>
+		</form>
+    <div  id = "formattedAddress"></div>
+	<div  id = "addressComponents"></div>
+	<div  id = "geometry"></div>
+	<div  id = "map"></div>
+
+<p>This will get your current location. Click the button to get your coordinates.</p>
+
+<button onclick="getLocation()">Try It</button>
+
+<p id="demo"></p>
+
+<script>
+// Initialize and add the map
+function initMap() {
+  // The location of Uluru
+  var uluru = {lat: 42.020442, lng: -93.64016};
+  // The map, centered at Uluru
+  var map = new google.maps.Map(
+      document.getElementById('map'), {zoom: 20, center: uluru});
+  // The marker, positioned at Uluru
+  var marker = new google.maps.Marker({position: uluru, map: map});
+}
+    </script>
+    <!--Load the API from the specified URL
+    * The async attribute allows the browser to render the page while the API loads
+    * The key parameter will contain your own API key (which is not needed for this tutorial)
+    * The callback parameter executes the initMap() function
+    -->
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMT68fhdPcztskeY3SI9YEXkWp2MHmi3A&callback=initMap">
+    </script>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+var x = document.getElementById("demo");
+var locationForm = document.getElementById('location-form');
+var options = {
+  enableHighAccuracy: true,
+  timeout: 5000,
+  maximumAge: 0
+};
+
+locationForm.addEventListener('submit', geocode);
+
+function geocode(e){
+	e.preventDefault();
+	var location = document.getElementById('location-input').value;
+	axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
+		params:{
+			address:location,
+			key: 'AIzaSyAMT68fhdPcztskeY3SI9YEXkWp2MHmi3A'
+		}
+	})
+		.then(function(response){
+		console.log(response);
+		//Formatted address
+		repositionMap( response.data.results[0].geometry.location.lat, response.data.results[0].geometry.location.lng, 20 );
+		var formattedAddress = response.data.results[0].formatted_address;
+		var formattedAddressOutput = `
+				<ul class= "list-group">
+				<li class = "list-group-item">${formattedAddress}</li>
+				</ul>
+			`;
+			var addressComponents = response.data.results[0].address_components;
+			var addressComponentsOutput = '<ul class ="list-group">';
+			for(var i=0; i < addressComponents.length; i++){
+				addressComponentsOutput += `
+					<li class = "list-group-item"><strong>${addressComponents[i].types[0]}</strong>:
+				${addressComponents[i].long_name}</li>
+				`;
+			}
+			addressComponentsOutput += '</ul>';
+
+		//Formatted address
+		var geometryLat = response.data.results[0].geometry.location.lat;
+		var geometryLong = response.data.results[0].geometry.location.lng;
+		var geometryOutput = `
+				<ul class= "list-group">
+				<li class = "list-group-item"><strong>Latitude: </strong>${geometryLat}</li>
+				<li class = "list-group-item"><strong>Longitude: </strong>${geometryLong}</li>
+				</ul>
+			`;
+
+			//output to app
+            document.getElementById('formattedAddress').innerHTML = formattedAddressOutput;
+			document.getElementById('addressComponents').innerHTML = addressComponentsOutput;
+			document.getElementById('geometry').innerHTML = geometryOutput;
+
+		})
+		.catch(function(response){
+			console.log(response);
+		})
+}
+
+function error(err) {
+  console.warn(`ERROR(${err.code}): ${err.message}`);
+  repositionMap(Math.random()*360-180,Math.random()*360-180, 4);
+}
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition, error, options);
+    } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+
+function repositionMap(latitude, longitude, zoom){
+	  var uluru = {lat:latitude, lng: longitude};
+	  var map = new google.maps.Map(
+		  document.getElementById('map'), {zoom: zoom, center: uluru});
+	  var marker = new google.maps.Marker({position: uluru, map: map});
+}
+
+function showPosition(position) {
+	repositionMap(position.coords.latitude, position.coords.longitude, 20);
+    x.innerHTML = "Latitude: " + position.coords.latitude +
+    "<br>Longitude: " + position.coords.longitude;
+	
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,7 @@
+FrontEndObjects
+com.server.backend
+com.server.backend.Controllers
+com.server.backend.services
+com.server.backend.staticHelpers
+com.server.backend.webSocketEndpoints
+com.server.backend.webSocketEndpoints.Encoders

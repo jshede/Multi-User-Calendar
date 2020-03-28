@@ -1,0 +1,20 @@
+<div class="garden-component">
+    <div *ngIf="selectedPlant" class="showcase">
+        <div class="plant-item">
+            <h2 [ngStyle]="{'color': selectedPlant.color}">{{ selectedPlant.color | uppercase }} {{ selectedPlant.name | uppercase }}</h2>
+            <div><div class="attribute"><label><span class="badge">name</span> <input [(ngModel)]="selectedPlant.name" placeholder="Name"></label></div></div>
+            <div><div class="attribute"><label><span class="badge">color</span> <input [(ngModel)]="selectedPlant.color" placeholder="Color"></label></div></div>
+        </div>
+    </div>
+
+    <div class="garden">
+        <div *ngFor="let plant of plants" class="plant-item" [class.selected]="plant === selectedPlant" (click)="onSelect(plant)">
+            <h2 [ngStyle]="{'color': plant.color}">{{ plant.color | uppercase }} {{ plant.name | uppercase }}</h2>
+            <div class="plant-info">
+                <div><div class="attribute"><span class="badge">id</span> {{ plant.id }}</div></div>
+                <div><div class="attribute"><span class="badge">name</span> {{ plant.name }}</div></div>
+                <div><div class="attribute"><span class="badge">color</span> {{ plant.color }}</div></div>
+            </div>
+        </div>
+    </div>
+</div>

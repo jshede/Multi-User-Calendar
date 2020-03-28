@@ -1,0 +1,16 @@
+<div class="day-of-month">{{ day.date.getDate() }}</div>
+
+<ul>
+        <app-calendar-event
+            *ngFor="let event of day.events"
+            [event]="event"
+        ></app-calendar-event>
+</ul>
+
+<div
+    id="more-events"
+    *ngIf="day.events.length > capacity"
+    (click)="immDayView()"
+>
+    {{ day.events.length - capacity }} more
+</div>

@@ -1,0 +1,109 @@
+// Bootstrap: Grays
+$white:     #fff;
+$gray-100:  #f8f9fa;
+$gray-200:  #e9ecef;
+$gray-300:  #dee2e6;
+$gray-400:  #ced4da;
+$gray-500:  #adb5bd;
+$gray-600:  #6c757d;
+$gray-700:  #495057;
+$gray-800:  #343a40;
+$gray-900:  #212529;
+$black:     #000;
+
+// Bootstrap: Add new grays
+$grays: (
+);
+
+
+// Bootstrap: Colors
+$light-blue:    #d6d6ff;
+$light-indigo:  #ebd6ff;
+$light-purple:  #f4d6ff;
+$light-pink:    #ffd6fb;
+$light-red:     #ffd9d6;
+$light-orange:  #ffeed6;
+$light-yellow:  #fbffd6;
+$light-green:   #d6ffd9;
+$light-teal:    #d6ffe9;
+$light-cyan:    #d6fffc;
+
+$blue:    #7c6ded;
+$indigo:  #ad6ded;
+$purple:  #d56ded;
+$pink:    #ed6dc4;
+$red:     #ed6d6f;
+$orange:  #edcf6d;
+$yellow:  #f0f47a;
+$green:   #54d367;
+$teal:    #54d3a7;
+$cyan:    #54d3cf;
+
+$dark-blue:    #103793;
+$dark-indigo:  #107993;
+$dark-purple:  #6c1093;
+$dark-pink:    #93108b;
+$dark-red:     #931016;
+$dark-orange:  #b5760a;
+$dark-yellow:  #c5cc06;
+$dark-green:   #27930b;
+$dark-teal:    #0b9376;
+$dark-cyan:    #22aaa6;
+
+// Bootstrap: Add new colors
+$colors: (
+);
+
+
+// Bootstrap: Theme colors
+$primary:    $blue;
+$secondary:  $gray-600;
+$success:    $green;
+$info:       $cyan;
+$warning:    $yellow;
+$danger:     $red;
+$light:      $gray-100;
+$dark:       $gray-800;
+
+// Bootstrap: Add new theme colors
+$theme-colors: (
+);
+
+
+// Bootstrap: Set a specific jump point for requesting color jumps
+$theme-color-interval: 8%;
+
+// Bootstrap: The yiq lightness value that determines when the lightness of color changes from "dark" to "light". Acceptable values are between 0 and 255.
+$yiq-contrasted-threshold: 150;
+
+// Bootstrap: Customize the light and dark text colors for use in our YIQ color contrast function.
+$yiq-text-dark:  $gray-900;
+$yiq-text-light: $white;
+
+
+// Heat map
+$heat0:  #a8e6c4;
+$heat1:  #dcedc1;
+$heat2:  #ffd3b6;
+$heat3:  #ffaaa5;
+$heat4:  #ff8b94;
+
+// Other colors
+$neutral-fg: $gray-800;
+$neutral-bg: $white;
+$neutral-border: $gray-200;
+
+$selected-fg: $dark-blue;
+$selected-bg: $light-blue;
+$selected-border: $blue;
+
+$inactive-fg: $dark-orange;
+$inactive-bg: $light-orange;
+$inactive-border: $orange;
+
+
+// Bootstrap: Specific overrides
+$nav-tabs-border-color: $neutral-border;
+$nav-tabs-link-hover-border-color: $neutral-border;
+$nav-tabs-link-active-bg: $neutral-bg;
+$nav-tabs-link-active-border-color: $neutral-border;

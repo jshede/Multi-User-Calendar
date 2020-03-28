@@ -1,0 +1,130 @@
+<div class="container form" id="new-event-form">
+  <div class="card shadow-sm">
+    <h2 class="card-header">
+      Create an event
+    </h2>
+
+    <div class="card-body">
+      <form [formGroup]="form" [class.failed]="failed" (ngSubmit)="createEvent()">
+        <div class="form-group">
+          <input type="text" class="form-control" formControlName="name" placeholder="Event" required>
+
+          <span class="input-error" *ngIf="failed && form.get('name').invalid">
+            Please enter an event name
+          </span>
+        </div>
+
+        <div class="form-group">
+          <input type="text" class="form-control" formControlName="location" placeholder="Location" required>
+
+          <span class="input-error" *ngIf="failed && form.get('location').invalid">
+            Please enter a location
+          </span>
+          <button type="button" class="btn btn-primary" (click)="getLocation()"> Current Location </button>
+        </div>
+
+        <div class="form-group input-group">
+          <input
+              type="text"
+              class="form-control"
+              ngbDatepicker #d="ngbDatepicker"
+              formControlName="startDate"
+              placeholder="Start date"
+          >
+
+          <div class="input-group-append">
+            <button type="button" (click)="d.toggle()" class="btn btn-primary">
+              <i class="fas fa-calendar"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <ngb-timepicker formControlName="startTime" [meridian]= "true"></ngb-timepicker>
+
+          <span
+              class="input-error"
+              *ngIf="failed && (form.get('startTime').invalid || form.get('startDate').invalid)"
+          >
+            Please enter a start time
+          </span>
+        </div>
+
+        <div class="form-group input-group">
+          <input
+              type="text"
+              class="form-control"
+              ngbDatepicker #d2="ngbDatepicker"
+              formControlName="endDate"
+              placeholder="End date"
+          >
+
+          <div class="input-group-append">
+            <button type="button" (click)="d2.toggle()" class="btn btn-primary">
+              <i class="fas fa-calendar"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <ngb-timepicker formControlName="endTime" [meridian]= "true"></ngb-timepicker>
+
+          <span
+              class="input-error"
+              *ngIf="failed && (form.get('endTime').invalid || form.get('endDate').invalid)"
+          >
+            Please enter an end time
+          </span>
+        </div>
+
+        <div class="form-group">
+          <textarea
+              class="form-control"
+              formControlName="description"
+              rows="2"
+              cols="36"
+              maxlength="72"
+              placeholder="Description (72 characters)"
+          ></textarea>
+
+          <span class="input-error" *ngIf="failed && form.get('description').invalid">
+            Please enter a short description
+          </span>
+        </div>
+
+        <div class="form-group" *ngIf="groups.length > 0">
+          <label for="options">Groups:</label>
+
+          <label
+              class="control control-radio"
+              for="select-group-{{ group.id }}"
+              *ngFor="let group of groups"
+          >
+            {{ group.name }}
+            <input
+                type="radio"
+                id="select-group-{{ group.id }}"
+                (click)="selectGroup(group)"
+                [checked]="selectedGroup != null && selectedGroup.id == group.id"
+            >
+            <div class="control-indicator"></div>
+          </label>
+        </div>
+
+        <div class="form-group">
+          <label class="control control-checkbox">
+            High Priority
+            <input type="checkbox" formControlName="isHighPriority">
+            <div class="control-indicator"></div>
+          </label>
+        </div>
+
+        <div class="form-group mt-4">
+          <button type="submit" class="btn btn-block btn-outline-primary">
+            Create Event
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

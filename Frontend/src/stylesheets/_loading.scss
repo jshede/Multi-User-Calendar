@@ -1,0 +1,27 @@
+.loading {
+    width: calc(25vw + 25vh);
+    height: calc(25vw + 25vh);
+    
+    position: relative;
+    top: calc(50% - 12.5vw - 12.5vh);
+    left: calc(50% - 12.5vw - 12.5vh);
+    
+    background-color: $selected-border;
+    border-radius: calc(2.5vw + 2.5vh);
+
+    animation: loading 2s ease 0s normal infinite none running;
+}
+
+@keyframes loading {
+    0% {
+        transform: rotate(0);
+    }
+
+    50% {
+        transform: rotate(180deg) scale(0.25);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

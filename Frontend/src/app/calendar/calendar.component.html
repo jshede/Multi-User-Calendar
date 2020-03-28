@@ -1,0 +1,23 @@
+<div *ngIf="loading"></div>
+<div class="loading" *ngIf="loading"></div>
+
+<app-calendar-controls *ngIf="!loading"></app-calendar-controls>
+
+<div class="calendar-container" *ngIf="!loading">
+  <app-calendar-sidebar *ngIf="loggedIn"></app-calendar-sidebar>
+  
+  <app-month-view
+      *ngIf="view === 0"
+      [selected]="selected"
+  ></app-month-view>
+
+  <app-week-view
+      *ngIf="view === 1"
+      [selected]="selected"
+  ></app-week-view>
+
+  <app-day-view
+      *ngIf="view === 2"
+      [selected]="selected"
+  ></app-day-view>
+</div>

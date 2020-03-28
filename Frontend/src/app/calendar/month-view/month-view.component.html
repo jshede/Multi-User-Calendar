@@ -1,0 +1,15 @@
+<div class="weekday">SUN</div>
+<div class="weekday">MON</div>
+<div class="weekday">TUE</div>
+<div class="weekday">WED</div>
+<div class="weekday">THU</div>
+<div class="weekday">FRI</div>
+<div class="weekday">SAT</div>
+
+<!-- 6x7 grid of day cells -->
+<app-calendar-day-cell
+    *ngFor="let day of days"
+    [day]="day"
+    [capacity]=4
+    [ngClass]="{'inactive': !day.active, 'selected': day.selected}"
+></app-calendar-day-cell>

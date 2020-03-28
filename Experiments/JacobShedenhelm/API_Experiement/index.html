@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<!
+	This is an experiment that uses javascript, html, bootstrap4
+	google geocode api, and html5 geolocation feature. To use the
+	google geocode api, enter your address in the text box and press submit.
+	This will display, several things about the address.
+
+	To use the html5 geolocation feature, press the 'get location' button. this
+	will display your current coordinates.
+
+	In the future, we can compare these with in a certain range to track attendance at an event.
+
+
+>
+<html>
+	<head>
+		<!Add bootstrap4 to the html>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<title>Check location</title></head>
+
+<body>
+	<h2 id="text-center">Enter Location: </h2>
+		<form id = "location-form">
+			<input type = "text" id = "location-input"
+			class = "form-control form-control-lg">
+			<button type  = "sumbit" class = "btn btn-primary btn-block"> Submit </button>
+		</form>
+    <div  id = "formattedAddress"></div>
+	<div  id = "addressComponents"></div>
+	<div  id = "geometry"></div>
+
+<p>This will get your current location. Click the button to get your coordinates.</p>
+
+<button onclick="getLocation()">Try It</button>
+
+<p id="demo"></p>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+var x = document.getElementById("demo");
+var locationForm = document.getElementById('location-form');
+
+locationForm.addEventListener('submit', geocode);
+
+function geocode(e){
+	e.preventDefault();
+	var location = document.getElementById('location-input').value;
+	axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
+		params:{
+			address:location,
+			key: 'AIzaSyAMT68fhdPcztskeY3SI9YEXkWp2MHmi3A'
+		}
+	})
+		.then(function(response){
+		console.log(response);
+		//Formatted address
+		var formattedAddress = response.data.results[0].formatted_address;
+		var formattedAddressOutput = `
+				<ul class= "list-group">
+				<li class = "list-group-item">${formattedAddress}</li>
+				</ul>
+			`;
+			var addressComponents = response.data.results[0].address_components;
+			var addressComponentsOutput = '<ul class ="list-group">';
+			for(var i=0; i < addressComponents.length; i++){
+				addressComponentsOutput += `
+					<li class = "list-group-item"><strong>${addressComponents[i].types[0]}</strong>:
+				${addressComponents[i].long_name}</li>
+				`;
+			}
+			addressComponentsOutput += '</ul>';
+
+		//Formatted address
+		var geometryLat = response.data.results[0].geometry.location.lat;
+		var geometryLong = response.data.results[0].geometry.location.lng;
+		var geometryOutput = `
+				<ul class= "list-group">
+				<li class = "list-group-item"><strong>Latitude: </strong>${geometryLat}</li>
+				<li class = "list-group-item"><strong>Longitude: </strong>${geometryLong}</li>
+				</ul>
+			`;
+
+			//output to app
+            document.getElementById('formattedAddress').innerHTML = formattedAddressOutput;
+			document.getElementById('addressComponents').innerHTML = addressComponentsOutput;
+			document.getElementById('geometry').innerHTML = geometryOutput;
+
+		})
+		.catch(function(response){
+			console.log(response);
+		})
+}
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+
+function showPosition(position) {
+    x.innerHTML = "Latitude: " + position.coords.latitude +
+    "<br>Longitude: " + position.coords.longitude;
+}
+</script>
+
+</body>
+</html>

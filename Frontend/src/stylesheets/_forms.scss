@@ -1,0 +1,45 @@
+app-signup-form,
+app-login-form,
+app-event-form,
+app-group-form {
+    flex: 1 0 auto;
+}
+
+.form {
+    margin: 2em auto;
+    max-width: 5.5in;
+
+    .card-body {
+        color: #495057;
+    }
+
+    .input-group-text {
+        width: 2.5em;
+    }
+
+    .failed {
+        .ng-dirty.ng-touched.ng-invalid {
+            @extend .is-invalid;
+        }
+
+        .ng-valid[required] {
+            border-color: $success;
+        }
+
+        .is-invalid {
+            border-color: $danger;
+        }
+
+        .input-error {
+            color: $danger;
+            font-size: 0.75em;
+        }
+
+        .form-error {
+            font-size: 0.75em;
+            @extend .alert;
+            @extend .alert-danger;
+        }
+    }
+
+}

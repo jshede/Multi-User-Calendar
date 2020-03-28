@@ -1,0 +1,26 @@
+<!-- Motivated by https://github.com/eugenp/tutorials/tree/master/java-websocket/src/main/webapp -->
+
+<script>
+var ws;
+
+function connect(userId) {
+    
+    var host = document.location.host;
+    
+    ws = new WebSocket("ws://" +host  + "/comment/" + userId);
+
+    ws.onmessage = function(event) {
+        console.log(event.data);
+    };
+}
+
+function ping() {
+    ws.send("");
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    connect(1);
+}, false);
+</script>
+
+Look in your javascript console to see new comments being posted.

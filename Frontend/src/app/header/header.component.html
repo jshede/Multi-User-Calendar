@@ -1,0 +1,24 @@
+<a id="site-home-container" routerLink="/">
+  <object id="site-title" data="img/koala.svg" type="image/svg+xml">
+  </object>
+</a>
+
+<span id="site-username">({{ username }})</span>
+
+<ul class="nav">
+  <li class="nav-item">
+    <a class="nav-link" routerLinkActive="active" routerLink="/login" placement="bottom" ngbTooltip="Login">
+      <i class="fas fa-sign-in-alt"></i>
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" routerLinkActive="active" routerLink="/signup" placement="bottom" ngbTooltip="Signup">
+      <i class="fas fa-user-plus"></i>
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" routerLinkActive="active" routerLink="/calendar" placement="bottom" ngbTooltip="Calendar">
+      <i class="fas fa-calendar"></i>
+    </a>
+  </li>
+</ul>

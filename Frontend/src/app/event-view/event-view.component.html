@@ -1,0 +1,14 @@
+<div id="container">
+<div *ngIf="event != null" class="card">
+
+    <h1>Name: {{ event.name }} </h1>
+    <span>Description: {{ event.description }} </span><br>
+    <span>Location: {{ event.location }} </span><br>
+    <span>Start: {{ event.start }} </span><br>
+</div>
+</div>
+<div class="event-messaging">
+    <div id="chatbox"><ul id="myUL"></ul></div>
+     <input type='text' ng-model='textbox' name='textbox1' id='Text1' placeholder="Type message here.." #message>
+     <button class="btn btn-primary" (click)="postMessage(message.value)">Send</button>
+</div>

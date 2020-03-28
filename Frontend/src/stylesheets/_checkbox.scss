@@ -1,0 +1,81 @@
+/* Adapted from:
+ * https://kyusuf.com/post/completely-css-custom-checkbox-radio-buttons-and-select-boxes
+ */
+
+.control {
+    display: block;
+    position: relative;
+    padding-left: 1.7rem;
+    cursor: pointer;
+
+    input {
+        position: absolute;
+        z-index: -1;
+        opacity: 0;
+    }
+
+    input:checked ~ .control-indicator {
+        background: #2aa1c0;
+        border: 1px solid #0e94ad;
+    }
+
+    input:disabled ~ .control-indicator {
+        background: #e6e6e6;
+        opacity: 0.6;
+        pointer-events: none;
+    }
+
+    input:checked ~ .control-indicator:after {
+        display: block;
+    }
+}
+
+.control-indicator {
+    position: absolute;
+    top: 0.1rem;
+    left: 0;
+    height: 1.2rem;
+    width: 1.2rem;
+    background: #f8f8fb;
+    border: 1px solid #cfcfcf;
+
+    &:after {
+        content: '';
+        position: absolute;
+        display: none;
+    }
+}
+
+.control-checkbox {
+    .control-indicator:after {
+        left: 0.32rem;
+        top: 0.1rem;
+        width: 0.4rem;
+        height: 0.7rem;
+        border: solid #fff;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+    }
+
+    input:disabled ~ .control-indicator:after {
+        border-color: #7b7b7b;
+    }
+}
+
+.control-radio {
+    .control-indicator {
+        border-radius: 50%;
+        
+        &:after {
+            left: 0.36rem;
+            top: 0.36rem;
+            padding: 0.175rem;
+            border-radius: 50%;
+            background: #fff;
+        }
+    }
+
+    input:disabled ~ .control-indicator:after {
+        background: #7b7b7b;
+    }
+}
